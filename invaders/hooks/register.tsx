@@ -295,12 +295,12 @@ export const register: Register = on => {
       const { Text } = $.ui.resolve(e)
       return <Text dimColor>Invaders plays in the terminal or the desktop app.</Text>
     }
-    const { Box, Client } = $.ui.resolve(e)
+    const ui = $.ui.resolve(e)
 
-    // The board's props are written in place, as a literal beside the module's path.
+    // The board is taken from the table where it is drawn, its path beside its name.
     return (
-      <Box flexDirection="column">
-        <Client
+      <ui.Box flexDirection="column">
+        <ui.Client
           key="game"
           module="./game.tsx"
           props={{
@@ -315,20 +315,20 @@ export const register: Register = on => {
             terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
           }}
         />
-      </Box>
+      </ui.Box>
     )
   })
 
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     if (e.props.hasSurvey) return next(e)
     if ((e.surface === 'terminal' || e.surface === 'desktop') && (await read($, bandOpen))) {
-      const { Box, Client } = $.ui.resolve(e)
+      const ui = $.ui.resolve(e)
 
       // The board sits in the middle of the band, whatever its width. The band has
       // no focus prop; the game pauses on a sent prompt instead.
       return (
-        <Box flexDirection="column" alignItems="center" width={e.props.bodyColumns}>
-          <Client
+        <ui.Box flexDirection="column" alignItems="center" width={e.props.bodyColumns}>
+          <ui.Client
             key="game"
             module="./game.tsx"
             props={{
@@ -343,7 +343,7 @@ export const register: Register = on => {
               terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
             }}
           />
-        </Box>
+        </ui.Box>
       )
     }
     if (!e.props.isWorking || !(await read($, offer))) return next(e)
