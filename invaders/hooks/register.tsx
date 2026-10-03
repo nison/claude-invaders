@@ -296,46 +296,55 @@ export const register: Register = on => {
       return <Text dimColor>Invaders plays in the terminal or the desktop app.</Text>
     }
     const { Box, Client } = $.ui.resolve(e)
-    const props = {
-      save: (await $.store.get('save')) ?? null,
-      pause: await read($, pause),
-      resetSeq: await read($, resetSeq),
-      intro: await read($, intro),
-      working: await read($, working),
-      isFocused: e.props.isFocused,
-      bodyRows: e.props.scroll.bodyRows,
-      placement: e.props.placement,
-      terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
-    }
 
-    // Written as calls, not JSX, so the surface module's path reads as a plain string.
-    return Box({ flexDirection: 'column', children: [Client({ key: 'game', module: './game.tsx', props })] })
+    // The board's props are written in place, as a literal beside the module's path.
+    return (
+      <Box flexDirection="column">
+        <Client
+          key="game"
+          module="./game.tsx"
+          props={{
+            save: (await $.store.get('save')) ?? null,
+            pause: await read($, pause),
+            resetSeq: await read($, resetSeq),
+            intro: await read($, intro),
+            working: await read($, working),
+            isFocused: e.props.isFocused,
+            bodyRows: e.props.scroll.bodyRows,
+            placement: e.props.placement,
+            terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
+          }}
+        />
+      </Box>
+    )
   })
 
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     if (e.props.hasSurvey) return next(e)
     if ((e.surface === 'terminal' || e.surface === 'desktop') && (await read($, bandOpen))) {
       const { Box, Client } = $.ui.resolve(e)
-      const props = {
-        save: (await $.store.get('save')) ?? null,
-        pause: await read($, pause),
-        resetSeq: await read($, resetSeq),
-        intro: await read($, intro),
-        working: await read($, working),
-        // The band has no focus prop; the game pauses on a sent prompt instead.
-        isFocused: true,
-        bodyRows: e.props.maxRows,
-        placement: 'band',
-        terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
-      }
 
-      // The board sits in the middle of the band, whatever its width.
-      return Box({
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: e.props.bodyColumns,
-        children: [Client({ key: 'game', module: './game.tsx', props })],
-      })
+      // The board sits in the middle of the band, whatever its width. The band has
+      // no focus prop; the game pauses on a sent prompt instead.
+      return (
+        <Box flexDirection="column" alignItems="center" width={e.props.bodyColumns}>
+          <Client
+            key="game"
+            module="./game.tsx"
+            props={{
+              save: (await $.store.get('save')) ?? null,
+              pause: await read($, pause),
+              resetSeq: await read($, resetSeq),
+              intro: await read($, intro),
+              working: await read($, working),
+              isFocused: true,
+              bodyRows: e.props.maxRows,
+              placement: 'band',
+              terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
+            }}
+          />
+        </Box>
+      )
     }
     if (!e.props.isWorking || !(await read($, offer))) return next(e)
     const { Box, Button, Text } = $.ui.resolve(e)
