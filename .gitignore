@@ -1,5 +1,7 @@
 # Written by Claude Code each time the mod loads
 invaders/.claude-plugin/types/
-# The promo video and its render scripts are kept locally
-promo/
+# The video and GIF are published; the scripts that render them are kept locally
+promo/*
+!promo/invaders-promo.gif
+!promo/invaders-promo.mp4
 .DS_Store

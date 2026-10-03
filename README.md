@@ -4,8 +4,13 @@ A tiny Space Invaders you play above the prompt while Claude works. It pauses wh
 Claude finishes, saves your wave and score, and draws in your terminal's own colors.
 Playing never interrupts Claude.
 
+![Invaders playing above the prompt in Claude Code](promo/invaders-promo.gif)
+
+[Watch the 30-second video](promo/invaders-promo.mp4)
+
 ```
 invaders/          the mod (a Claude Code plugin)
+promo/             a short video and GIF of the game
 .claude-plugin/    marketplace.json, so this folder can be installed as a marketplace
 ```
 
@@ -22,6 +27,12 @@ Needs a Claude Code recent enough to run mods (built against 2.1.288).
 
 Then type `/invaders` and click the board to play. Update later with
 `claude plugin update invaders@cli-mods`.
+
+**If `/invaders` is not found** after installing, quit Claude Code and start it again;
+a session that was already running, and sometimes the first new one, does not load a
+newly installed mod. If it is still missing, your Claude Code may not have mods switched
+on yet: update to the latest version, or start it with
+`CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 claude`.
 
 **Or load it for one session** from a clone of this repository:
 
