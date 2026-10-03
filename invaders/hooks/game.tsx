@@ -1,7 +1,7 @@
 import type { ClientModule, ClientSurface, JsonValue } from 'claude-code'
 
-import { ANSI, INK, TICK_MS, W, draw, drawIntro, fire, fitHeight, move, newGame, resize, restore, savedHi, step } from './engine'
-import type { Game } from './engine'
+import { ANSI, INK, TICK_MS, W, draw, drawIntro, fire, fitHeight, move, newGame, resize, restore, savedHi, step } from './engine.ts'
+import type { Game } from './engine.ts'
 
 export type GameProps = {
   save: JsonValue

@@ -1,7 +1,7 @@
 import { describe, expect, mock, test } from 'claude-code/testing'
 
-import { MAX_H, MIN_H, W, draw, drawIntro, fire, fitHeight, move, newGame, resize, restore, step } from '../hooks/engine'
-import type { Game } from '../hooks/engine'
+import { MAX_H, MIN_H, W, draw, drawIntro, fire, fitHeight, move, newGame, resize, restore, step } from '../hooks/engine.ts'
+import type { Game } from '../hooks/engine.ts'
 
 const PANE_PROPS = {
   title: 'Invaders',

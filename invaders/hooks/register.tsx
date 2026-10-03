@@ -1,8 +1,8 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register, Timer } from 'claude-code'
 
-import type { IntroSignal, Mode, PauseSignal, Place } from '../types'
-import { MAX_H, W } from './engine'
+import type { IntroSignal, Mode, PauseSignal, Place } from '../types/index.d.ts'
+import { MAX_H, W } from './engine.ts'
 
 const PANE = 'invaders'
 /** The terminal width from which the fullscreen layout docks a pane beside the chat. */
