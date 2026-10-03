@@ -308,11 +308,8 @@ export const register: Register = on => {
       terminalColumns: e.viewport?.columns ?? DOCK_COLUMNS,
     }
 
-    return (
-      <Box flexDirection="column">
-        <Client key="game" module="./game.tsx" props={props} />
-      </Box>
-    )
+    // Written as calls, not JSX, so the surface module's path reads as a plain string.
+    return Box({ flexDirection: 'column', children: [Client({ key: 'game', module: './game.tsx', props })] })
   })
 
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
@@ -333,11 +330,12 @@ export const register: Register = on => {
       }
 
       // The board sits in the middle of the band, whatever its width.
-      return (
-        <Box flexDirection="column" alignItems="center" width={e.props.bodyColumns}>
-          <Client key="game" module="./game.tsx" props={props} />
-        </Box>
-      )
+      return Box({
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: e.props.bodyColumns,
+        children: [Client({ key: 'game', module: './game.tsx', props })],
+      })
     }
     if (!e.props.isWorking || !(await read($, offer))) return next(e)
     const { Box, Button, Text } = $.ui.resolve(e)

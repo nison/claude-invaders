@@ -16,7 +16,8 @@ promo/             a short video and GIF of the game
 
 ## Install
 
-Needs a Claude Code recent enough to run mods (built against 2.1.288).
+Needs Claude Code 2.1.287 or later, which is when mods arrived (built against 2.1.288).
+[What the mod does and does not do](invaders/README.md) is spelled out in the plugin's own README.
 
 **Install it like any plugin**, inside Claude Code:
 
@@ -28,11 +29,10 @@ Needs a Claude Code recent enough to run mods (built against 2.1.288).
 Then type `/invaders` and click the board to play. Update later with
 `claude plugin update invaders@cli-mods`.
 
-**If `/invaders` is not found** after installing, quit Claude Code and start it again;
-a session that was already running, and sometimes the first new one, does not load a
-newly installed mod. If it is still missing, your Claude Code may not have mods switched
-on yet: update to the latest version, or start it with
-`CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 claude`.
+**If `/invaders` is not found** after installing, run `/reload-plugins`, or quit Claude
+Code and start it again; a session that was already running does not load a newly
+installed mod, and sometimes the first new one does not either. Mods need Claude Code
+2.1.287 or later (`claude --version`). `/plugin` shows which mods a session loaded.
 
 **Or load it for one session** from a clone of this repository:
 
