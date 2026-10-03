@@ -1,0 +1,5 @@
+# Written by Claude Code each time the mod loads
+invaders/.claude-plugin/types/
+# The promo video and its render scripts are kept locally
+promo/
+.DS_Store

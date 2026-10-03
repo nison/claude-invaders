@@ -1,0 +1,13 @@
+{
+  "name": "invaders",
+  "version": "0.1.0",
+  "description": "A tiny Space Invaders to play above the prompt while Claude works; pauses when Claude finishes and keeps your level.",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Nigel Hudson",
+    "url": "https://github.com/nison"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/nison/claude-invaders",
+  "homepage": "https://github.com/nison/claude-invaders"
+}

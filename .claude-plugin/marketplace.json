@@ -1,0 +1,14 @@
+{
+  "name": "cli-mods",
+  "owner": {
+    "name": "Nigel Hudson"
+  },
+  "plugins": [
+    {
+      "name": "invaders",
+      "source": "./invaders",
+      "description": "A tiny Space Invaders to play above the prompt while Claude works; pauses when Claude finishes and keeps your level."
+    }
+  ],
+  "description": "Mods for Claude Code: Invaders, a tiny Space Invaders to play while Claude works."
+}
