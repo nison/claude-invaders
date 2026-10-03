@@ -32,6 +32,12 @@ See README.md for install and commands.
 - **Pane height:** a Client's `surface.rows` is its own content's height. The
   visible height is `e.props.scroll.bodyRows` from the Pane `ui.render`, passed in
   as a prop. Panes dock full-height only at 110+ columns in the fullscreen layout.
+- **Directory validation (claude.ai/directory/manage):** the checker blocks a file
+  that fetches `Client` on a line of its own (`const { Box, Client } = $.ui.resolve(e)`),
+  reporting "Client element whose path is not a fixed string" at that line. Take the
+  table whole (`const ui = $.ui.resolve(e)`) and draw `<ui.Client module="./game.tsx">`.
+  Local imports name their file (`./engine.ts`), every file stays under 5 MiB, and the
+  plugin folder needs its own README, license and `.claude-plugin/icon.png`.
 - **Tests:** a hook that calls an `$` op with nothing beneath it fails silently, so
   tests stub `command.register`, `turn.start`, `turn.complete` and the AbovePrompt
   `ui.render` with `on(...)`. `$.ui.panes` can't be stubbed, so `isOpen` catches.

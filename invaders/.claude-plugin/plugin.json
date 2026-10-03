@@ -9,5 +9,8 @@
   },
   "license": "MIT",
   "repository": "https://github.com/nison/claude-invaders",
-  "homepage": "https://github.com/nison/claude-invaders"
+  "homepage": "https://github.com/nison/claude-invaders",
+  "supportUrl": "https://github.com/nison/claude-invaders/issues",
+  "documentationUrl": "https://github.com/nison/claude-invaders/blob/main/invaders/README.md",
+  "privacyPolicyUrl": "https://github.com/nison/claude-invaders/blob/main/invaders/README.md#what-this-mod-does-and-what-it-does-not"
 }
