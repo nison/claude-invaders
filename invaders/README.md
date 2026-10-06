@@ -4,9 +4,24 @@ A tiny Space Invaders you play in Claude Code while Claude works. The game sits 
 the band above the prompt, draws in your terminal's own colors, pauses when Claude
 finishes, and saves your wave and score. Playing never interrupts Claude.
 
+Needs Claude Code 2.1.287 or later, in the terminal or the Desktop app's Code tab.
+
+## Install
+
+Install Invaders from the Claude plugin directory, or straight from its repository by
+running these two commands in Claude Code:
+
+```
+/plugin marketplace add nison/claude-invaders
+/plugin install invaders@cli-mods
+```
+
+Then run `/reload-plugins`, or quit Claude Code and start it again, so the mod loads.
+
+## Play
+
 Type `/invaders` and click the board to play. `/invaders help` lists every command
-and key. Needs Claude Code 2.1.287 or later, in the terminal or the Desktop app's
-Code tab.
+and key. To update later, run `claude plugin update invaders@cli-mods` in your shell.
 
 ## Keys
 
